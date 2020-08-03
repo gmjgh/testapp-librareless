@@ -30,7 +30,7 @@ public class ForecastRequest extends HttpRequest<ForecastResponse> {
     }
 
     @Override
-    public void send(ExecutorService executorService) {
+    public void loadData(ExecutorService executorService) {
         try {
             String data = execute(executorService).get();
             Log.d("ForecastResponse loaded", data);

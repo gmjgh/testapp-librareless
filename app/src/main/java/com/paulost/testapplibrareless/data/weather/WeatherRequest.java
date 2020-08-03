@@ -30,7 +30,7 @@ public class WeatherRequest extends HttpRequest<WeatherResponse> {
     }
 
     @Override
-    public void send(ExecutorService executorService) {
+    public void loadData(ExecutorService executorService) {
         try {
             String data = execute(executorService).get();
             Log.d("WeatherResponse loaded", data);

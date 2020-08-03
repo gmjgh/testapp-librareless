@@ -1,4 +1,4 @@
-package com.paulost.testapplibrareless;
+package com.paulost.testapplibrareless.presentation.base;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
@@ -17,10 +17,12 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.paulost.testapplibrareless.App;
+import com.paulost.testapplibrareless.R;
 import com.paulost.testapplibrareless.data.base.ResponseCallback;
 import com.paulost.testapplibrareless.domain.model.WeatherResponse;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+public class MainActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private static final int PERMISSION_REQUEST_CODE = 13;
 
@@ -55,12 +57,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     ResponseCallback<WeatherResponse> weatherResponseResponseCallback = new ResponseCallback<WeatherResponse>() {
         @Override
         public void success(WeatherResponse data) {
-            Toast.makeText(MapsActivity.this, data.name, Toast.LENGTH_LONG).show();
+            Toast.makeText(MainActivity.this, data.name, Toast.LENGTH_LONG).show();
         }
 
         @Override
         public void failure(Exception e) {
-            Toast.makeText(MapsActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
+            Toast.makeText(MainActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
         }
     };
 

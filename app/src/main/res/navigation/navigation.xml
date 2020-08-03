@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/fragment_users">
+
+    <fragment
+        android:id="@+id/fragment_map"
+        android:name="com.testapp.testapp.presentation.locations.LocationsFragment"
+        android:label="fragment_users"
+        tools:layout="@layout/fragment_users">
+        <action
+            android:id="@+id/action_fragment_users_to_fragment_user"
+            app:destination="@id/fragment_user"
+            app:enterAnim="@anim/transition_horizontal_slide_in_right"
+            app:exitAnim="@anim/transition_horizontal_slide_out_left"
+            app:popEnterAnim="@anim/transition_horizontal_slide_in_left"
+            app:popExitAnim="@anim/transition_horizontal_slide_out_right"
+            app:popUpTo="@id/fragment_users" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_user"
+        android:name="com.testapp.testapp.presentation.location.LocationFragment"
+        android:label="fragment_user"
+        tools:layout="@layout/fragment_user">
+        <argument android:name="user" />
+    </fragment>
+</navigation>

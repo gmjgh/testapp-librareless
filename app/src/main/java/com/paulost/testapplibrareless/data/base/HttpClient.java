@@ -18,7 +18,7 @@ public class HttpClient {
     }
 
     public void getCurrentWeather(ResponseCallback<WeatherResponse> responseCallback, double lat, double lon, Units units) {
-        new WeatherRequest(responseCallback, lat, lon, units).send(executor);
+        new WeatherRequest(responseCallback, lat, lon, units).loadData(executor);
     }
 
     public void getFiveDaysForecast(ResponseCallback<ForecastResponse> responseCallback, double lat, double lon) {
@@ -26,7 +26,7 @@ public class HttpClient {
     }
 
     public void getFiveDaysForecast(ResponseCallback<ForecastResponse> responseCallback, double lat, double lon, Units units) {
-        new ForecastRequest(responseCallback, lat, lon, units).send(executor);
+        new ForecastRequest(responseCallback, lat, lon, units).loadData(executor);
     }
 
 }

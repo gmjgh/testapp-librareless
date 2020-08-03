@@ -11,6 +11,10 @@ public class Weather implements Parcelable {
     public String description;
     public String icon;
 
+    public String getFormattedIcon() {
+        return "http://openweathermap.org/img/wn/" + icon + "@2x.png";
+    }
+
     protected Weather(Parcel in) {
         id = in.readInt();
         main = in.readString();
