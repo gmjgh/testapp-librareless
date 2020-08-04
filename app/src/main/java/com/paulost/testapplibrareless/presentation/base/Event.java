@@ -10,7 +10,7 @@ public class Event<T> {
         this.content = content;
     }
 
-    public final boolean getConsumed() {
+    public final boolean isConsumed() {
         return this.consumed;
     }
 

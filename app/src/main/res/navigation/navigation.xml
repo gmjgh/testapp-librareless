@@ -3,28 +3,30 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/fragment_users">
+    app:startDestination="@id/fragment_map">
 
     <fragment
         android:id="@+id/fragment_map"
-        android:name="com.testapp.testapp.presentation.locations.LocationsFragment"
-        android:label="fragment_users"
-        tools:layout="@layout/fragment_users">
+        android:name="com.paulost.testapplibrareless.presentation.map.MapFragment"
+        android:label="fragment_map"
+        tools:layout="@layout/fragment_map">
         <action
-            android:id="@+id/action_fragment_users_to_fragment_user"
-            app:destination="@id/fragment_user"
+            android:id="@+id/action_fragment_map_to_fragment_weather"
+            app:destination="@id/fragment_weather"
             app:enterAnim="@anim/transition_horizontal_slide_in_right"
             app:exitAnim="@anim/transition_horizontal_slide_out_left"
             app:popEnterAnim="@anim/transition_horizontal_slide_in_left"
             app:popExitAnim="@anim/transition_horizontal_slide_out_right"
-            app:popUpTo="@id/fragment_users" />
+            app:popUpTo="@id/fragment_map" />
     </fragment>
 
     <fragment
-        android:id="@+id/fragment_user"
-        android:name="com.testapp.testapp.presentation.location.LocationFragment"
-        android:label="fragment_user"
-        tools:layout="@layout/fragment_user">
-        <argument android:name="user" />
+        android:id="@+id/fragment_weather"
+        android:name="com.paulost.testapplibrareless.presentation.weather.WeatherFragment"
+        android:label="fragment_weather"
+        tools:layout="@layout/fragment_weather">
+        <argument
+            android:name="weatherResponse"
+            app:argType="com.paulost.testapplibrareless.domain.model.WeatherResponse" />
     </fragment>
 </navigation>

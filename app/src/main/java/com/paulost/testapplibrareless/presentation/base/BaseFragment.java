@@ -54,11 +54,6 @@ public abstract class BaseFragment<B extends ViewDataBinding, V extends BaseView
     }
 
     @Override
-    public int getLayoutRes() {
-        return 0;
-    }
-
-    @Override
     public void navigateBack() {
         activityContext.onBackPressed();
     }
@@ -84,12 +79,6 @@ public abstract class BaseFragment<B extends ViewDataBinding, V extends BaseView
             binding.setVariable(BR.vm, viewModel);
         binding.executePendingBindings();
         return binding.getRoot();
-    }
-
-    @SuppressWarnings("unchecked")
-    @Override
-    public Class<V> provideViewModelClass() {
-        return null;
     }
 
     @Override

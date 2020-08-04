@@ -1,5 +1,6 @@
 package com.paulost.testapplibrareless.domain.model;
 
+import android.graphics.Bitmap;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -15,11 +16,18 @@ public class WeatherResponse implements Parcelable {
     public Wind wind;
     public Clouds clouds;
     public int dt;
+    public String dt_txt;
     public Sys sys;
     public int timezone;
     public int id;
     public String name;
     public int cod;
+
+    public Bitmap icon;
+
+    public String formatWeatherData(){
+        return "temperature: " + main.temp + "\n" + "humidity: " + main.humidity + "\n" + "pressure: " + main.pressure;
+    }
 
     protected WeatherResponse(Parcel in) {
         coord = in.readParcelable(Coord.class.getClassLoader());
@@ -30,6 +38,7 @@ public class WeatherResponse implements Parcelable {
         wind = in.readParcelable(Wind.class.getClassLoader());
         clouds = in.readParcelable(Clouds.class.getClassLoader());
         dt = in.readInt();
+        dt_txt = in.readString();
         sys = in.readParcelable(Sys.class.getClassLoader());
         timezone = in.readInt();
         id = in.readInt();
@@ -47,6 +56,7 @@ public class WeatherResponse implements Parcelable {
         dest.writeParcelable(wind, flags);
         dest.writeParcelable(clouds, flags);
         dest.writeInt(dt);
+        dest.writeString(dt_txt);
         dest.writeParcelable(sys, flags);
         dest.writeInt(timezone);
         dest.writeInt(id);

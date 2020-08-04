@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 
 import com.paulost.testapplibrareless.BR;
 import com.paulost.testapplibrareless.R;
@@ -46,7 +47,7 @@ public class BaseActivity extends FragmentActivity implements BaseView {
 
     @Override
     public void navigateBack() {
-        onBackPressed();
+        Navigation.findNavController(this, R.id.content).popBackStack();
     }
 
     private void setAndBindContentView(@Nullable Bundle savedInstanceState) {
@@ -63,11 +64,11 @@ public class BaseActivity extends FragmentActivity implements BaseView {
 
     @Override
     public void showProgress() {
-        viewModel.progress = true;
+        viewModel.progress.set(true);
     }
 
     @Override
     public void hideProgress() {
-        viewModel.progress = false;
+        viewModel.progress.set(false);
     }
 }

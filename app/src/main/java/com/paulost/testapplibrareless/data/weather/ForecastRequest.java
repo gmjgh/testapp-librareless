@@ -2,7 +2,8 @@ package com.paulost.testapplibrareless.data.weather;
 
 import android.util.Log;
 
-import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.stream.JsonReader;
 import com.paulost.testapplibrareless.BuildConfig;
 import com.paulost.testapplibrareless.data.base.API;
 import com.paulost.testapplibrareless.data.base.HttpRequest;
@@ -10,6 +11,7 @@ import com.paulost.testapplibrareless.data.base.ResponseCallback;
 import com.paulost.testapplibrareless.domain.model.ForecastResponse;
 import com.paulost.testapplibrareless.domain.model.Units;
 
+import java.io.StringReader;
 import java.util.concurrent.ExecutorService;
 
 public class ForecastRequest extends HttpRequest<ForecastResponse> {
@@ -34,7 +36,9 @@ public class ForecastRequest extends HttpRequest<ForecastResponse> {
         try {
             String data = execute(executorService).get();
             Log.d("ForecastResponse loaded", data);
-            ForecastResponse result = new Gson().fromJson(data, ForecastResponse.class);
+            JsonReader reader = new JsonReader(new StringReader(data));
+            reader.setLenient(true);
+            ForecastResponse result = new GsonBuilder().serializeNulls().create().fromJson(reader, ForecastResponse.class);
             success(result);
         } catch (Exception e) {
             Log.d("ForecastResponse failed", e.getMessage());
