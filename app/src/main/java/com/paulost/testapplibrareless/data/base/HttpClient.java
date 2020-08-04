@@ -1,6 +1,9 @@
 package com.paulost.testapplibrareless.data.base;
 
+import android.graphics.Bitmap;
+
 import com.paulost.testapplibrareless.data.weather.ForecastRequest;
+import com.paulost.testapplibrareless.data.weather.WeatherImageRequest;
 import com.paulost.testapplibrareless.data.weather.WeatherRequest;
 import com.paulost.testapplibrareless.domain.model.ForecastResponse;
 import com.paulost.testapplibrareless.domain.model.Units;
@@ -27,6 +30,10 @@ public class HttpClient {
 
     public void getFiveDaysForecast(ResponseCallback<ForecastResponse> responseCallback, double lat, double lon, Units units) {
         new ForecastRequest(responseCallback, lat, lon, units).loadData(executor);
+    }
+
+    public void loadImage(ResponseCallback<Bitmap> responseCallback, String urlString) {
+        new WeatherImageRequest(responseCallback, urlString).loadData(executor);
     }
 
 }

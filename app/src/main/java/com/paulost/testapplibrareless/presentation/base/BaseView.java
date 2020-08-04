@@ -13,4 +13,10 @@ public interface BaseView {
 
     void navigateBack();
 
+    void showError(String message);
+
+    void showProgress();
+
+    void hideProgress();
+
 }

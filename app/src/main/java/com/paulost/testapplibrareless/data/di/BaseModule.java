@@ -9,7 +9,7 @@ import com.paulost.testapplibrareless.data.base.HttpClient;
 
 public class BaseModule {
 
-    HttpClient httpClient;
+    private HttpClient httpClient;
 
     public BaseModule() {
         this.httpClient = new HttpClient();

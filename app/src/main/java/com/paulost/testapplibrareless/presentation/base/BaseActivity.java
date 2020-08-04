@@ -1,6 +1,7 @@
 package com.paulost.testapplibrareless.presentation.base;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
@@ -55,4 +56,18 @@ public class BaseActivity extends FragmentActivity implements BaseView {
         binding.executePendingBindings();
     }
 
+    @Override
+    public void showError(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void showProgress() {
+        viewModel.progress = true;
+    }
+
+    @Override
+    public void hideProgress() {
+        viewModel.progress = false;
+    }
 }

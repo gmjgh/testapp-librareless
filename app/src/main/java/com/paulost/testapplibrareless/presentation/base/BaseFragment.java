@@ -31,6 +31,26 @@ public abstract class BaseFragment<B extends ViewDataBinding, V extends BaseView
         if (provideViewModelClass() != null)
             viewModel = new ViewModelProvider(this).get(provideViewModelClass());
         activityContext = (Activity) context;
+        beforeViewInit();
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        onViewInit(view, savedInstanceState);
+        listenDataChanges();
+    }
+
+    protected void beforeViewInit() {
+
+    }
+
+    protected void onViewInit(View view, Bundle savedInstanceState) {
+
+    }
+
+    protected void listenDataChanges() {
+
     }
 
     @Override
@@ -72,4 +92,21 @@ public abstract class BaseFragment<B extends ViewDataBinding, V extends BaseView
         return null;
     }
 
+    @Override
+    public void showError(String message) {
+        if (getActivity() != null && getActivity() instanceof BaseActivity)
+            ((BaseActivity) getActivity()).showError(message);
+    }
+
+    @Override
+    public void showProgress() {
+        if (getActivity() != null && getActivity() instanceof BaseActivity)
+            ((BaseActivity) getActivity()).showProgress();
+    }
+
+    @Override
+    public void hideProgress() {
+        if (getActivity() != null && getActivity() instanceof BaseActivity)
+            ((BaseActivity) getActivity()).hideProgress();
+    }
 }

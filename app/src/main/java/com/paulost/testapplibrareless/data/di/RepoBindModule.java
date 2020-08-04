@@ -7,12 +7,18 @@ import com.paulost.testapplibrareless.domain.locations.WeatherRepo;
 
 public class RepoBindModule {
 
+    private BaseModule baseModule;
+
+    public RepoBindModule(BaseModule baseModule) {
+        this.baseModule = baseModule;
+    }
+
     public LocationsRepo provideLocationsRepoStorage() {
         return new LocationsRepoStorage();
     }
 
     public WeatherRepo provideWeatherRepoRest() {
-        return new WeatherRepoRest();
+        return new WeatherRepoRest(baseModule.provideHttpClient());
     }
 
 }

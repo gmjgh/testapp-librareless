@@ -12,6 +12,5 @@ public class MainViewModel extends AndroidViewModel {
         super(application);
     }
 
-    protected boolean progress = false;
-    protected String error = null;
+    public boolean progress = false;
 }

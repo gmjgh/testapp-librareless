@@ -27,7 +27,7 @@ public class App extends Application implements AppComponent {
         super.onCreate();
         instance = this;
         baseModule = new BaseModule();
-        repoBindModule = new RepoBindModule();
+        repoBindModule = new RepoBindModule(baseModule);
     }
 
     @Override
